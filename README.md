@@ -65,14 +65,14 @@ Now you are all set to use the Circuit Breaker.
 ![Image of CB in flow](https://github.com/Vishwasp13/circuit-breaker-module/blob/main/images/cb-in-flow.png)
 
 ## CB Route configuration
-	- Circuit Breaker ID
-		- Unique ID for the circuit breaker usually the app name, default value is #[app.name]
-	- Threshold Percentage
-		- Percentage of error which when reached or exceeded post threshold period, would make the circuit trip i.e move to open state
-	- Threshold Period
-		- ISO-8601 duration format time, it denotes for what duration the error has to be monitored and counted from the time when first error occurs for circuit breaker to trip
-	- Open Duration
-		- ISO-8601 duration format time, it denotes how long the circuit should be open
+- Circuit Breaker ID
+	- Unique ID for the circuit breaker usually the app name, default value is #[app.name]
+- Threshold Percentage
+	- Percentage of error which when reached or exceeded post threshold period, would make the circuit trip i.e move to open state
+- Threshold Period
+	- ISO-8601 duration format time, it denotes for what duration the error has to be monitored and counted from the time when first error occurs for circuit breaker to trip
+- Open Duration
+	- ISO-8601 duration format time, it denotes how long the circuit should be open
 		
 ![Image of CB route flow](https://github.com/Vishwasp13/circuit-breaker-module/blob/main/images/cb-route-config.png)
 
@@ -80,11 +80,11 @@ Now you are all set to use the Circuit Breaker.
 Ensure that only circuit breaker config is used per application
 
 ## Youtube links
-	- Part 1 : https://youtu.be/tPLu6yW46Nk  
-	- Part 2 : https://youtu.be/sPRCcMZX4Qk
-	- Part 3 : https://youtu.be/SmCpAgThqSM
-	- Part 4 : https://youtu.be/jXQqUOWb8Bg
-	- Part 5 : https://youtu.be/v-l9943qMmY
+- Part 1 : https://youtu.be/tPLu6yW46Nk  
+- Part 2 : https://youtu.be/sPRCcMZX4Qk
+- Part 3 : https://youtu.be/SmCpAgThqSM
+- Part 4 : https://youtu.be/jXQqUOWb8Bg
+- Part 5 : https://youtu.be/v-l9943qMmY
 	
 ## Author
-	- Vishwassingh Pawar
+- Vishwassingh Pawar
