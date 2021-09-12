@@ -19,7 +19,7 @@ The Circuit Breaker has the following three states:
 	- A scheduled task is triggered which would kick in action after the defined open duration expires, post this the state will be switched back to CLOSED
 	
 ## Circuit Breaker State Transition
-![Image of Circuit Breaker State Transition] (https://github.com/Vishwasp13/circuit-breaker-module/blob/main/images/cb-state-transition.png)
+![Image of Circuit Breaker State Transition](https://github.com/Vishwasp13/circuit-breaker-module/blob/main/images/cb-state-transition.png)
 
 
 ## Installation of Circuit Breaker Module
