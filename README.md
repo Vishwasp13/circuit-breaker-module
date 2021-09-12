@@ -73,6 +73,8 @@ Now you are all set to use the Circuit Breaker.
 	- ISO-8601 duration format time, it denotes for what duration the error has to be monitored and counted from the time when first error occurs for circuit breaker to trip
 - Open Duration
 	- ISO-8601 duration format time, it denotes how long the circuit should be open
+- Error Expression:
+	- Dataweave expression to specify errors that should be counted towards circuit state change
 		
 ![Image of CB route flow](https://github.com/Vishwasp13/circuit-breaker-module/blob/main/images/cb-route-config.png)
 
