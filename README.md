@@ -47,7 +47,7 @@ After installation is successful, add the following dependency into your anypoin
 Once added, the module should be reflected in the Mule Pallete
 ![Image of Circuit Breaker MuleSoft Connector Pallete](https://github.com/Vishwasp13/circuit-breaker-module/blob/main/images/mule-pallete.png)
 
-### Step 4 - Create Circuit Breake Configuration
+### Step 4 - Create Circuit Breaker Configuration
 Before you get started, make sure to configure the circuit breaker config to initialize the hazelcast cluster. 
 - Member IP Address
 	- IP Address of the other nodes on which the same app is hosted

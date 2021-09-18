@@ -14,6 +14,8 @@ import org.slf4j.Logger;
 
 import com.resiliency.connectors.routes.FallbackRoute;
 import com.resiliency.connectors.routes.MainRoute;
+import com.resiliency.connectors.utility.CBConstants;
+
 import static com.resiliency.connectors.utility.CBUtility.getCoreEvent;
 import static com.resiliency.connectors.utility.CBUtility.isError;
 import org.mule.runtime.core.api.event.CoreEvent;
@@ -22,6 +24,7 @@ public class CBOperations {
 	@Inject
 	private ExpressionManager expressionManager;
 	
+	@SuppressWarnings("unchecked")
 	@DisplayName("Circuit Breaker")
 	public void circuitBreaker(
 			@Optional(defaultValue="#[app.name]")
@@ -54,14 +57,14 @@ public class CBOperations {
 			switch(cbProcessor.getCbState()) {
 				case CLOSED:
 					mainRoute.getChain().process(result -> {
-						CoreEvent event = getCoreEvent(result, "event");
+						CoreEvent event = getCoreEvent(result, CBConstants.EVENT);
 						if(isError(errorExpression, event, expressionManager)) {
 							cbProcessor.closedStateErrorHandler();
 						}
 						callback.success(result);
 						
 					}, (error, previous) -> {
-						CoreEvent event = getCoreEvent(error, "event");
+						CoreEvent event = getCoreEvent(previous, CBConstants.EVENT);
 						if(isError(errorExpression, event, expressionManager)) {
 							cbProcessor.closedStateErrorHandler();
 						}
@@ -79,14 +82,14 @@ public class CBOperations {
 				
 				case ERROR:
 					mainRoute.getChain().process(result -> {
-						CoreEvent event = getCoreEvent(result, "event");
+						CoreEvent event = getCoreEvent(result, CBConstants.EVENT);
 						if(isError(errorExpression, event, expressionManager)) {
 							cbProcessor.errorStateErrorHandler();
 						}
 						callback.success(result);
 						
 					}, (error, previous) -> {
-						CoreEvent event = getCoreEvent(error, "event");
+						CoreEvent event = getCoreEvent(previous, CBConstants.EVENT);
 						if(isError(errorExpression, event, expressionManager)) {
 							cbProcessor.errorStateErrorHandler();
 						}
