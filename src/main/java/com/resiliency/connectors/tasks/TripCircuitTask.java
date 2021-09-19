@@ -30,6 +30,8 @@ public class TripCircuitTask implements Runnable, Serializable{
 	
 	@Override
 	public void run() {
+		errors = CBClusterService.getServiceInstance().getErrorCounter().get(circuitBreakerId).get();
+		requests = CBClusterService.getServiceInstance().getRequestCounter().get(circuitBreakerId).get();
 	    BigDecimal ratio = new BigDecimal(errors).divide(new BigDecimal(requests));
 	    logger.info("Error Count {}", errors);
 	    logger.info("Request {}", requests);
