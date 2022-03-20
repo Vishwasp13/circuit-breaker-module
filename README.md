@@ -79,7 +79,7 @@ Now you are all set to use the Circuit Breaker.
 ![Image of CB route flow](https://github.com/Vishwasp13/circuit-breaker-module/blob/main/images/cb-route-config.png)
 
 ## Caution
-Ensure that only circuit breaker config is used per application
+Ensure that only one circuit breaker config is used per application
 
 ## Youtube links
 - Part 1 : https://youtu.be/tPLu6yW46Nk  
@@ -87,6 +87,8 @@ Ensure that only circuit breaker config is used per application
 - Part 3 : https://youtu.be/SmCpAgThqSM
 - Part 4 : https://youtu.be/jXQqUOWb8Bg
 - Part 5 : https://youtu.be/v-l9943qMmY
+- Part 6 : https://youtu.be/LED1GvqUSWA
+- Demo   : https://youtu.be/R-2OANMO72E
 	
 ## Author
 - Vishwassingh Pawar

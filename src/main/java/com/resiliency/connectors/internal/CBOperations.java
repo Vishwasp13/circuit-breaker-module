@@ -105,5 +105,10 @@ public class CBOperations {
 			
 		
 	}
+	@DisplayName("Change CB State")
+	public void changeCircuitBreakerState(@Optional(defaultValue = "default") String circuitBreakerId, CBState state) {
+		logger.info("Manually changing cb state");
+		CBClusterService.getServiceInstance().upsertCbStateMapEntries(circuitBreakerId, state);
+	}
 
 }
