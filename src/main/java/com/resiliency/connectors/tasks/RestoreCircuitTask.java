@@ -22,9 +22,9 @@ public class RestoreCircuitTask implements Runnable, Serializable{
 
 	@Override
 	public void run() {
-		logger.info("Trip duration completed, restoring the circuit");
+		logger.debug("Trip duration completed, restoring the circuit");
 		CBClusterService.getServiceInstance().upsertCbStateMapEntries(circuitBreakerId, CBState.CLOSED);
-		logger.info("Circuit restored to CLOSED state");
+		logger.debug("Circuit restored to CLOSED state");
 		CBUtility.resetPNCounter(CBClusterService.getServiceInstance().getErrorCounter().remove(circuitBreakerId));
 		CBUtility.resetPNCounter(CBClusterService.getServiceInstance().getRequestCounter().remove(circuitBreakerId));
 		

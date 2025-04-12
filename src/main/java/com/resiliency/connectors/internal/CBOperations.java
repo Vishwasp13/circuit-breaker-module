@@ -95,11 +95,11 @@ public class CBOperations {
 						}
 						callback.error(error);
 					});
-					logger.info("Error State");
+					logger.debug("Error State");
 					break;
 					
 			   default:
-				   logger.info("Unexpected circuit state");
+				   logger.error("Unexpected circuit state");
 			
 			}
 			
@@ -107,7 +107,7 @@ public class CBOperations {
 	}
 	@DisplayName("Change CB State")
 	public void changeCircuitBreakerState(@Optional(defaultValue = "default") String circuitBreakerId, CBState state) {
-		logger.info("Manually changing cb state");
+		logger.debug("Manually changing cb state");
 		CBClusterService.getServiceInstance().upsertCbStateMapEntries(circuitBreakerId, state);
 	}
 

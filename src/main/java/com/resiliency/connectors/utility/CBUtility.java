@@ -2,7 +2,7 @@ package com.resiliency.connectors.utility;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
-import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 
 import org.mule.runtime.core.api.el.ExpressionManager;
 import org.mule.runtime.core.api.event.CoreEvent;
@@ -15,15 +15,11 @@ import com.hazelcast.crdt.pncounter.PNCounter;
 public class CBUtility {
 	private static final Logger logger = getLogger(CBUtility.class);
 	
-	public static CoreEvent getCoreEvent(Object result, String fieldName) {
-		Field field = null;
+	public static CoreEvent getCoreEvent(Object result, String methodName) {
 		CoreEvent event = null;
 		try {
-			field = result.getClass().getDeclaredField(fieldName);
-			if(!field.isAccessible()) {
-				field.setAccessible(true);
-			}
-			event = (CoreEvent) field.get(result);	
+			Method getEventMethod = result.getClass().getMethod(methodName);
+			event = (CoreEvent) getEventMethod.invoke(result);	
 		}
 		catch(Exception e) {
 			e.printStackTrace();
@@ -66,9 +62,9 @@ public class CBUtility {
 	
 	public static void resetPNCounter(PNCounter pnCounter) {
 		if(pnCounter != null) {
-			logger.info("Destroying PN Counter");
+			logger.debug("Destroying PN Counter");
 			pnCounter.destroy();
-			logger.info("PN Counter destroyed");
+			logger.debug("PN Counter destroyed");
 		}
 	}
 

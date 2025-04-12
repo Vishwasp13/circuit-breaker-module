@@ -41,15 +41,15 @@ public class CBProcessor {
 	
 	public synchronized void closedStateErrorHandler() {
 		try {
-			logger.info("Error detected, error counter will be increased and state will be changed to ERROR, Current state is CLOSED");
+			logger.debug("Error detected, error counter will be increased and state will be changed to ERROR, Current state is CLOSED");
 			long errorCount = incrementErrors();
-			logger.info("Updated Error Count {}", errorCount);
+			logger.debug("Updated Error Count {}", errorCount);
 			long requestCount = incrementRequests();
-			logger.info("Updated Request Count {}", requestCount);
+			logger.debug("Updated Request Count {}", requestCount);
 			CBClusterService.getServiceInstance().upsertCbStateMapEntries(circuitBreakerId, CBState.ERROR);
 			TripCircuitTask tripTask = new TripCircuitTask(circuitBreakerId, new BigDecimal(thresholdPercentage), getRequests(), getErrors(), openDuration);
 			CBClusterService.scheduleTasks(tripTask, thresholdPeriod);
-			logger.info("Task scheduled for error check");
+			logger.debug("Task scheduled for error check");
 		}
 		catch(Throwable throwable) {
 			logger.error("Failure occurred while handling error in closed state {} {}", throwable.getMessage(), throwable);
@@ -57,11 +57,11 @@ public class CBProcessor {
 	}
 	public synchronized void errorStateErrorHandler() {
 		try {
-			logger.info("Errors detected, error counder will be increased, current state is ERROR");
+			logger.debug("Errors detected, error counder will be increased, current state is ERROR");
 			long errorCount = incrementErrors();
-			logger.info("Updated Error Count {}", errorCount);
+			logger.debug("Updated Error Count {}", errorCount);
 			long requestCount = incrementRequests();
-			logger.info("Updated Request Count {}", requestCount);
+			logger.debug("Updated Request Count {}", requestCount);
 		}
 		catch(Throwable throwable) {
 			logger.error("Failure occurred while handling error in error state {} {}", throwable.getMessage(), throwable);

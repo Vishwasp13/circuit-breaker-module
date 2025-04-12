@@ -34,7 +34,7 @@ public class CBClusterService {
 	private static final Logger logger = getLogger(CBClusterService.class);
 	
 	private CBClusterService(CBConfigParameters configParameters) {
-		logger.info("Intializing Hazelcast cluster");
+		logger.debug("Intializing Hazelcast cluster");
 		Config hazelCastConfig = new Config();
 		hazelCastConfig.getNetworkConfig().setPublicAddress(configParameters.getHostIP()).setPort(Integer.parseInt(configParameters.getClusterPort()));
 		JoinConfig join = hazelCastConfig.getNetworkConfig().getJoin();
@@ -45,7 +45,7 @@ public class CBClusterService {
 		}
 		hazelcastInstance = Hazelcast.newHazelcastInstance(hazelCastConfig);
 		cbStateMap = hazelcastInstance.getReplicatedMap(CBConstants.REPLCATED_MAP_NAME);
-		logger.info("Hazelcast instance initialized successfully.");
+		logger.debug("Hazelcast instance initialized successfully.");
 		
 	}
 	
@@ -95,7 +95,7 @@ public class CBClusterService {
 	
 	
 	public void upsertCbStateMapEntries(String circuitBreakerId, CBState state) {
-		logger.info("Upserting state for {} state as {}", circuitBreakerId,state);
+		logger.debug("Upserting state for {} state as {}", circuitBreakerId,state);
 		cbStateMap.put(circuitBreakerId, state);
 	}
 	public ReplicatedMap<String,CBState> getCbStateMap() {

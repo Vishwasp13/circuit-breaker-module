@@ -19,17 +19,17 @@ public class CBListener extends Source<CBListenerEvent,Void>{
 	@Override
 	public void onStart(SourceCallback<CBListenerEvent, Void> sourceCallback) throws MuleException {
 		// TODO Auto-generated method stub
-		logger.info("Starting circuit breaker listener");
+		logger.debug("Starting circuit breaker listener");
 		CBClusterService.getServiceInstance().getCbStateMap().addEntryListener(
 				new EntryAdapter<String, CBState>(){
 					@Override
 					public void entryAdded(EntryEvent<String,CBState> event) {
-						logger.info("Entry added in replicated map");
+						logger.debug("Entry added in replicated map");
 						handleStateChange(sourceCallback, event);
 					}
 					@Override
                     public void entryUpdated(EntryEvent<String,CBState> event) {
-						logger.info("Entry updated in replicated map");
+						logger.debug("Entry updated in replicated map");
 						handleStateChange(sourceCallback, event);
 					}
 					

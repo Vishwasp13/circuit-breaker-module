@@ -30,17 +30,17 @@ This section describes the installation process for this mvp connector in order 
 - Extract the repository
 
 ### Step 2 - Install connector into Maven repository
-- Open commandline and go to the downloaded and extracted repository location. 
-- Perform "mvn install" 
-- Connector should be installed successfully
+- Open commandline and navigate to the location where the repository is extracted.
+- Perform "mvn install" .
+- Connector should be installed successfully.
 
 ### Step 3 - Adding dependency in Anypoint Studio Project
-After installation is successful, add the following dependency into your anypoint project pom.xml:
+After installation is successful, add the following dependency into your mule project's pom.xml:
 
 		<dependency>
 			<groupId>com.resiliency.connectors</groupId>
 			<artifactId>circuit-breaker-connector</artifactId>
-			<version>1.0.0</version>
+			<version>1.2.0</version>
 			<classifier>mule-plugin</classifier>			
 		</dependency>
 
@@ -80,6 +80,9 @@ Now you are all set to use the Circuit Breaker.
 
 ## Caution
 Ensure that only one circuit breaker config is used per application
+
+## Changelog
+v1.2.0 Enabled support for Java17
 
 ## Youtube links
 - Part 1 : https://youtu.be/tPLu6yW46Nk  
